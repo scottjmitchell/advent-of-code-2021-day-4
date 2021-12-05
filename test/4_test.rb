@@ -41,30 +41,32 @@ class GiantSquidTest < Minitest::Test
                                                 ]
   end
 
-  def test_first_number_called_marks_test_tables_correctly
-    assert @giant_squid.check_numbers(@test_data) == [
-                                                [
-                                                  [false,false,false,false,false],
-                                                  [false,false,false,false,false],
-                                                  [false,false,false,false,true],
-                                                  [false,false,false,false,false],
-                                                  [false,false,false,false,false]
-                                                ],
-                                                [
-                                                  [false,false,false,false,false],
-                                                  [false,false,false,false,false],
-                                                  [false,false,true,false,false],
-                                                  [false,false,false,false,false],
-                                                  [false,false,false,false,false]
-                                                ],
-                                                [
-                                                  [false,false,false,false,false],
-                                                  [false,false,false,false,false],
-                                                  [false,false,false,false,false],
-                                                  [false,false,false,false,false],
-                                                  [false,false,false,false,true]
-                                                ]
-                                              ]
+  def test_that_scorecards_are_correct
+    assert @giant_squid.check_numbers(@test_data) == 4512
+
+    # assert @giant_squid.check_numbers(@test_data) == [
+    #                                             [
+    #                                               [false,   false,  true,   true,   true],
+    #                                               [false,   true,   true,   true,   true],
+    #                                               [true,    true,   true,   false,  true],
+    #                                               [false,   false,  false,  false,  true],
+    #                                               [false,   false,  false,  false,  false]
+    #                                             ],
+    #                                             [
+    #                                               [false,   false,  true,   true,   false],
+    #                                               [true,    false,  false,  true,   true],
+    #                                               [false,   false,  true,   false,  true],
+    #                                               [false,   true,   false,  true,   true],
+    #                                               [true,    true,   false,  false,  false]
+    #                                             ],
+    #                                             [
+    #                                               [true,    true,   true,   true,   true],
+    #                                               [false,   false,  false,  true,   false],
+    #                                               [false,   false,  true,   false,  false],
+    #                                               [false,   true,   false,  false,  true],
+    #                                               [true,    true,   false,  false,  true]
+    #                                             ]
+    #                                           ]
     
   end
 end
