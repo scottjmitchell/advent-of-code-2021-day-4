@@ -18,6 +18,26 @@ class GiantSquidTest < Minitest::Test
   end
 
   def test_final_board_is_correct
-    assert @giant_squid.get_boards(@test_data)[3] = [[14,21,24,4],[10,16,15,9.19],[18,8,23,26,20],[22,11,13,6,5],[2,0,12,3,7]]
+    assert @giant_squid
+            .get_boards(@test_data)[3] = [
+                                          [14,21,24,4],
+                                          [10,16,15,9.19],
+                                          [18,8,23,26,20],
+                                          [22,11,13,6,5],
+                                          [2,0,12,3,7]
+                                        ]
   end  
+
+  def test_that_bingo_score_check_tables_are_correct
+    assert @giant_squid
+            .get_bingo_score_check_tables(1) == [
+                                                  [
+                                                    [false,false,false,false,false],
+                                                    [false,false,false,false,false],
+                                                    [false,false,false,false,false],
+                                                    [false,false,false,false,false],
+                                                    [false,false,false,false,false]
+                                                  ]
+                                                ]
+  end
 end
