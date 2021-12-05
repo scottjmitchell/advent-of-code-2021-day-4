@@ -2,21 +2,23 @@
 
 class GiantSquid
   def numbers_called(data)
-    data.split("\n")[0].split(",")
+    numbers_called = data.split("\n")[0].split(",")
+    numbers_called.collect {|n| n.to_i}
   end
   
   def get_boards(data)
     bingo_boards = Array.new
 
-    counter = 2
+    counter = 1
     board = Array.new
     
-    while counter < data.split("\n").length - 2
+    while counter < data.split("\n").length
       if data.split("\n")[counter] == ""
         bingo_boards << board
         board = Array.new
       else
-        board << data.split("\n")[counter].split(" ")
+        stringy_boards = data.split("\n")[counter].split(" ")
+        board << stringy_boards.collect {|n| n.to_i}
       end
       counter += 1
     end
@@ -35,6 +37,7 @@ end
 data = File.read("#{File.dirname(__FILE__)}/input.txt")
 gs = GiantSquid.new
 
-print gs.get_boards(data)
+# print gs.numbers_called(data)
+print gs.get_boards(data).length
 
 
