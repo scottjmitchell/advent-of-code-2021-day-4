@@ -40,4 +40,31 @@ class GiantSquidTest < Minitest::Test
                                                   ]
                                                 ]
   end
+
+  def test_first_number_called_marks_test_tables_correctly
+    assert @giant_squid.check_numbers(@test_data) == [
+                                                [
+                                                  [false,false,false,false,false],
+                                                  [false,false,false,false,false],
+                                                  [false,false,false,false,true],
+                                                  [false,false,false,false,false],
+                                                  [false,false,false,false,false]
+                                                ],
+                                                [
+                                                  [false,false,false,false,false],
+                                                  [false,false,false,false,false],
+                                                  [false,false,true,false,false],
+                                                  [false,false,false,false,false],
+                                                  [false,false,false,false,false]
+                                                ],
+                                                [
+                                                  [false,false,false,false,false],
+                                                  [false,false,false,false,false],
+                                                  [false,false,false,false,false],
+                                                  [false,false,false,false,false],
+                                                  [false,false,false,false,true]
+                                                ]
+                                              ]
+    
+  end
 end

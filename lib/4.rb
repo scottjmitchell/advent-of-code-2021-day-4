@@ -8,12 +8,11 @@ class GiantSquid
   
   def get_boards(data)
     bingo_boards = Array.new
-
-    counter = 1
+    counter = 2
     board = Array.new
-    
-    while counter < data.split("\n").length
-      if data.split("\n")[counter] == ""
+
+    while counter <= data.split("\n").length
+      if data.split("\n")[counter] == "" || counter == data.split("\n").length
         bingo_boards << board
         board = Array.new
       else
@@ -30,9 +29,24 @@ class GiantSquid
     boards = get_boards(data)
     bingo_score_check_tables = get_bingo_score_check_tables(boards.length)
 
-    numbers_called(data).each do |n|
+    board_counter = 0
+    row_counter = 0
+    column_counter = 0 
 
+    boards.each do |board|
+      for row in 0..4
+        if board[row].include?(numbers_called(data)[0])
+          column_counter = board[row].index(numbers_called(data)[0])
+          row_counter = row
+          bingo_score_check_tables[board_counter][row_counter][column_counter] = true
+        end
+      end
+      row_counter = 0
+      column_counter = 0
+      board_counter += 1
     end
+
+    bingo_score_check_tables
   end
 
   def get_bingo_score_check_tables(number_of_boards)
@@ -51,10 +65,4 @@ end
 
 data = File.read("#{File.dirname(__FILE__)}/input.txt")
 gs = GiantSquid.new
-
-# gs.numbers_called(data)
-# gs.get_boards(data)
-
-print gs.get_bingo_score_check_tables(1)
-
-
+gs.check_numbers(data)
